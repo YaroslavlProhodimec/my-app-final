@@ -1,9 +1,9 @@
 import React from 'react';
 import {Header} from "./header/Header";
 import {useAppSelector} from "../store/store";
-import {Card, Main} from "./main/Main";
-import s from "./main/Main.module.css"
 import {Container, Grid} from "@mui/material";
+import {CardItem} from "./main/card/Card";
+import {Main} from "./main/Main";
 
 const BaseContainer = () => {
     const products = useAppSelector(state => state.products)
@@ -16,7 +16,7 @@ const BaseContainer = () => {
                 {products.map(el =>
                     <Grid item xs={6}>
                         <main>
-                            <Card key={el.id} products={products}/>
+                            <Main key={el.id} {...el}/>
                         </main>
                     </Grid>
                 )}
