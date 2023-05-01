@@ -54,8 +54,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         },
     },
 }));
-
-export  function Header() {
+type PropsHeaderType = {
+openBasket:()=>void
+}
+export  function Header({openBasket}:PropsHeaderType) {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
         React.useState<null | HTMLElement>(null);
@@ -196,7 +198,7 @@ export  function Header() {
                         </IconButton>
 
                     </Box>
-                    <IconButton sx={{marginLeft:'7px'}}>
+                    <IconButton onClick={openBasket} sx={{marginLeft:'7px'}}>
                         <ShoppingBasketIcon/>
                     </IconButton>
                 </Toolbar>
