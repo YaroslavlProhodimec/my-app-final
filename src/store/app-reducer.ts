@@ -19,7 +19,6 @@ const initialState: ProductsType[] = [
     {id:v1(),image:nikeGreen,name:'nikeGreen',price:3000,quantity:0},
     {id:v1(),image:adidasGray,name:'adidasGray',price:3000,quantity:0},
     {id:v1(),image:adidasPink,name:'adidasPink',price:3000,quantity:0},
-
 ]
 export const productsReducer = (state: ProductsType[] = initialState, action: ActionsType): ProductsType[] => {
     switch (action.type) {

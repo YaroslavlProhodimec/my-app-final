@@ -6,19 +6,23 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
 type PropsBasketItemType = {
+    id:string
     name: string
     price: number
-    quantity: number
+    quantity?: number
+    removeBasket:(id:string)=>void
 }
-const BasketItem = ({name, price, quantity}: PropsBasketItemType) => {
+const BasketItem = ({id,name, price, quantity,removeBasket}: PropsBasketItemType) => {
+
+
     return (
         <ListItem>
             <Typography
             variant={'body1'}
             >
-            {name}{price}руб х {quantity}
+            {name} {price}руб х{quantity}
             </Typography>
-            <IconButton>
+            <IconButton onClick={()=>removeBasket(id)}>
                 <Close/>
             </IconButton>
 

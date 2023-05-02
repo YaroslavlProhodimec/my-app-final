@@ -24,11 +24,11 @@ type PropsMainType = {
     image?:any
     name:string
     price:number
-    quantity:number
+    quantity?:number
+    addBasket:(id:string, name:string,price:number,quantity:number)=>void
 }
 
-export function Main({id,image,name,price,quantity}: PropsMainType) {
-
+export function Main({id,image,price,name,quantity,addBasket}: PropsMainType) {
     return (
 
         <Box>
@@ -60,7 +60,7 @@ export function Main({id,image,name,price,quantity}: PropsMainType) {
                 <IconButton aria-label="share">
                     <ShareIcon />
                 </IconButton>
-                <Button variant={'outlined'} sx={{border:'1px solid pink' ,background: 'linear-gradient(89.9deg, rgb(208, 246, 255) 0.1%, rgb(255, 237, 237) 47.9%, rgb(255, 255, 231) 100.2%)'}}>
+                <Button onClick={()=>addBasket(id,name,price,1)} variant={'outlined'} sx={{border:'1px solid pink' ,background: 'linear-gradient(89.9deg, rgb(208, 246, 255) 0.1%, rgb(255, 237, 237) 47.9%, rgb(255, 255, 231) 100.2%)'}}>
                 Купить
             </Button>
             </CardActions>

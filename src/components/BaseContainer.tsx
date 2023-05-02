@@ -1,14 +1,23 @@
 import React, {useState} from 'react';
 import {Header} from "./header/Header";
-import {useAppSelector} from "../store/store";
-import {Container, Grid} from "@mui/material";
+import {useAppDispatch, useAppSelector} from "../store/store";
+import {Container} from "@mui/material";
 import {Main} from "./main/Main";
 import s from "./main/Main.module.css";
 import Basket from "./main/basket/Basket";
+import {addPropductsAC, removePropductsAC} from "../store/basket-reducer";
+
 const BaseContainer = () => {
     const products = useAppSelector(state => state.products)
     const basket = useAppSelector(state => state.basket)
-
+   const dispatch = useAppDispatch()
+    console.log(products)
+const removeBasket = (id:string) => {
+    dispatch(removePropductsAC(id))
+}
+    const addBasket = (id:string,name:string,price:number,quantity:number) => {
+        dispatch(addPropductsAC(id,name,price,quantity))
+    }
     const [open, setOpen] = useState(false);
     return (
         <>
@@ -19,13 +28,13 @@ const BaseContainer = () => {
                 {products.map(el =>
 
 
-                            <Main key={el.id} {...el}/>
+                            <Main  addBasket={addBasket}  key={el.id} {...el}/>
 
 
                 )}
                 </main>
             </Container>
-            <Basket  basket={basket} open={open} closeCart={()=>setOpen(false)}/>
+            <Basket removeBasket={removeBasket}  basket={basket} open={open} closeCart={()=>setOpen(false)}/>
         </>
     );
 };
